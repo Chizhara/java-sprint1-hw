@@ -1,10 +1,10 @@
-import java.util.Scanner;
-
 public class MonthData {
 
     int[] days;
     public MonthData(int monthNum){
-        if(monthNum >= 12 || monthNum <= 1)
+        monthNum++;
+
+        if(monthNum <= 12 || monthNum >= 1)
             if(monthNum == 2)
                 days = new int[28];
             else if(monthNum <= 7)
@@ -23,7 +23,7 @@ public class MonthData {
         days[dayNum - 1] = stepsCount;
     }
 
-    public void printDaysAndStepsFromMonth(Scanner scanner){
+    public void printDaysAndStepsFromMonth(){
         for(int i = 0; i < days.length; i++)
             System.out.println((i + 1) + " день: " + days[i]);
     }
@@ -49,19 +49,18 @@ public class MonthData {
     }
 
     public int bestSeries(int goalByStepsPerDay){
-        int resultBestSeria = 0;
-        int bufbestSeria = 0;
+        int resultBestSeries = 0;
+        int bufBestSeries = 0;
 
         for(int i = 0; i < days.length; i++)
             if(days[i] >= goalByStepsPerDay)
-                bufbestSeria++;
+                bufBestSeries++;
             else
-                if(bufbestSeria > resultBestSeria){
-                    resultBestSeria = bufbestSeria;
-                    bufbestSeria = 0;
-                }
+            if(bufBestSeries > resultBestSeries){
+                resultBestSeries = bufBestSeries;
+                bufBestSeries = 0;
+            }
 
-        return resultBestSeria;
+        return resultBestSeries;
     }
-
 }

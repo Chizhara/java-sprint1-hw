@@ -1,12 +1,8 @@
 import java.util.Scanner;
 
 public class Main {
-
-
-    static Scanner scanner;
-    static StepTracker tracker;
     public static void main(String[] args) {
-        scanner = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
         StepTracker tracker = new StepTracker(scanner);
 
         System.out.println("Программа \"Сётчик калорий\"!");
@@ -21,7 +17,7 @@ public class Main {
             } else if(terminalAnswer.equals("2")){
                 tracker.changeStepGoal();
             } else if(terminalAnswer.equals("3")){
-                tracker.printStatictic();
+                tracker.printStatistic();
             } else if(terminalAnswer.equals("0")){
                 break;
             } else {
@@ -37,5 +33,4 @@ public class Main {
         System.out.println("3 - Напечатать статистику за определённый месяц");
         System.out.println("0 - Выход");
     }
-
 }

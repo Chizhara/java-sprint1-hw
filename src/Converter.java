@@ -1,9 +1,9 @@
 public class Converter {
-    private int ratioSetpToCm = 75;
+    private int ratioStepToCm = 75;
     private int ratioStepToCalories = 50;
 
     int convertToKm(int steps){
-        int resultKm = (steps * ratioSetpToCm) / 100000;
+        int resultKm = (steps * ratioStepToCm) / 100000;
         return resultKm;
     }
 
@@ -11,5 +11,4 @@ public class Converter {
         int resultKilocalories = (steps * ratioStepToCalories) / 1000;
         return  resultKilocalories;
     }
-
 }

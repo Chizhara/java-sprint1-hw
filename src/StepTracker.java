@@ -13,7 +13,7 @@ public class StepTracker {
 
         monthsToData = new MonthData[12];
 
-        for(int i = 1; i <= 12; i++)
+        for(int i = 0; i < 12; i++)
             monthsToData[i] = new MonthData(i);
     }
 
@@ -35,12 +35,12 @@ public class StepTracker {
         goalByStepsPerDay = scanner.nextInt();
     }
 
-    public void printStatictic(){
+    public void printStatistic(){
         System.out.println("Введите номер месяца от 1 до 12");
-        int monthNum = scanner.nextInt();
+        int monthNum = scanner.nextInt() - 1;
 
         System.out.println("Количество пройденных шагов по дням:");
-        monthsToData[monthNum].printDaysAndStepsFromMonth(scanner);
+        monthsToData[monthNum].printDaysAndStepsFromMonth();
 
         System.out.println("\nОбщее количество шагов за месяц: " + monthsToData[monthNum].sumStepsFromMonth());
         System.out.println("\nМаксимальное пройденное количество шагов в месяце: " + monthsToData[monthNum].maxSteps());
@@ -50,4 +50,3 @@ public class StepTracker {
         System.out.println("\nЛучшая серия: " + monthsToData[monthNum].bestSeries(goalByStepsPerDay));
     }
 }
-

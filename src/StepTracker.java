@@ -18,16 +18,14 @@ public class StepTracker {
     }
 
     public void addNewNumberStepsPerDay(){
-        System.out.println("Напишите номер месяца от 1 до 12");
-        int monthNum = scanner.nextInt();
+        int monthNum = requestPrintMonthNum();
 
-        System.out.println("Напишите номер дня от 1 до " + monthsToData[monthNum - 1].days.length);
-        int dayNum = scanner.nextInt();
+        int dayNum = requestPrintDayNum(monthNum);
 
         System.out.println("Напишите количество шагов");
         int stepsCount = scanner.nextInt();
 
-        monthsToData[monthNum - 1].saveCountOfSteps(dayNum, stepsCount);
+        monthsToData[monthNum].saveCountOfSteps(dayNum, stepsCount);
     }
 
     public void changeStepGoal(){
@@ -36,8 +34,7 @@ public class StepTracker {
     }
 
     public void printStatistic(){
-        System.out.println("Введите номер месяца от 1 до 12");
-        int monthNum = scanner.nextInt() - 1;
+        int monthNum = requestPrintMonthNum();
 
         System.out.println("Количество пройденных шагов по дням:");
         monthsToData[monthNum].printDaysAndStepsFromMonth();
@@ -48,5 +45,33 @@ public class StepTracker {
         System.out.println("\nПройденная дистанция: " + converter.convertToKm(monthsToData[monthNum].sumStepsFromMonth()) + " км");
         System.out.println("\nКоличество сожженных килокалорий: " + converter.convertStepsToKilocalories(monthsToData[monthNum].sumStepsFromMonth()));
         System.out.println("\nЛучшая серия: " + monthsToData[monthNum].bestSeries(goalByStepsPerDay));
+    }
+
+    private int requestPrintMonthNum(){
+        int resultMonthNum;
+
+        while(true){
+            System.out.println("Введите номер месяца от 1 до 12");
+            resultMonthNum = scanner.nextInt() - 1;
+
+            if(resultMonthNum >= 0 && resultMonthNum <= 11)
+                break;
+        }
+
+        return resultMonthNum;
+    }
+
+    private int requestPrintDayNum(int monthNum){
+        int resultDayNum;
+
+        while(true){
+            System.out.println("Напишите номер дня от 1 до " + monthsToData[monthNum].days.length);
+            resultDayNum = scanner.nextInt() - 1;
+
+            if(resultDayNum >= 0 && resultDayNum <= monthsToData[monthNum].days.length)
+                break;
+        }
+
+        return resultDayNum;
     }
 }

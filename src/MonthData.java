@@ -20,7 +20,7 @@ public class MonthData {
     }
 
     public void saveCountOfSteps(int dayNum, int stepsCount){
-        days[dayNum - 1] = stepsCount;
+        days[dayNum] = stepsCount;
     }
 
     public void printDaysAndStepsFromMonth(){
@@ -53,13 +53,14 @@ public class MonthData {
         int bufBestSeries = 0;
 
         for(int i = 0; i < days.length; i++)
+        {
             if(days[i] >= goalByStepsPerDay)
                 bufBestSeries++;
             else
-            if(bufBestSeries > resultBestSeries){
-                resultBestSeries = bufBestSeries;
                 bufBestSeries = 0;
-            }
+            if(bufBestSeries > resultBestSeries)
+                resultBestSeries = bufBestSeries;
+        }
 
         return resultBestSeries;
     }

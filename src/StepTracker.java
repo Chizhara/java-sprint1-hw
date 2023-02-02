@@ -68,7 +68,7 @@ public class StepTracker {
             System.out.println("Напишите номер дня от 1 до " + monthsToData[monthNum].days.length);
             resultDayNum = scanner.nextInt() - 1;
 
-            if(resultDayNum >= 0 && resultDayNum <= monthsToData[monthNum].days.length)
+            if(resultDayNum >= 0 && resultDayNum < monthsToData[monthNum].days.length)
                 break;
         }
 
